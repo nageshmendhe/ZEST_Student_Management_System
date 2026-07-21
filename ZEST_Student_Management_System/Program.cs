@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using ZEST_Student_Management_System.Data;
+using ZEST_Student_Management_System.Middleware;
 using ZEST_Student_Management_System.Repositories;
 using ZEST_Student_Management_System.Repositories.Interface;
 using ZEST_Student_Management_System.Services;
@@ -91,6 +92,8 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
