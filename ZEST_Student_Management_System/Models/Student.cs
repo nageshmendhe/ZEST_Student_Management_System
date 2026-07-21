@@ -11,6 +11,8 @@
 
         public string Course { get; set; } = string.Empty;
 
-        public DateTime CreateDate { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+
+
     }
 }
