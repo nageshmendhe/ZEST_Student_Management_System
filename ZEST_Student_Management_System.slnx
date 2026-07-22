@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="ZEST_Student_Management_System.Tests/ZEST_Student_Management_System.Tests.csproj" />
   <Project Path="ZEST_Student_Management_System/ZEST_Student_Management_System.csproj" />
 </Solution>
