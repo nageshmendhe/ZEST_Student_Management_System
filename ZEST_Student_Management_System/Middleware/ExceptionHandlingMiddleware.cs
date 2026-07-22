@@ -3,17 +3,35 @@ using System.Text.Json;
 
 namespace ZEST_Student_Management_System.Middleware
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ExceptionHandlingMiddleware
     {
+        /// <summary>
+        /// The next
+        /// </summary>
         private readonly RequestDelegate _next;
+        /// <summary>
+        /// The logger
+        /// </summary>
         public readonly ILogger<ExceptionHandlingMiddleware> _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ExceptionHandlingMiddleware"/> class.
+        /// </summary>
+        /// <param name="next">The next.</param>
+        /// <param name="logger">The logger.</param>
         public ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger)
         {
             _next = next;
             _logger = logger;
         }
 
+        /// <summary>
+        /// Invokes the asynchronous.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public async Task InvokeAsync(HttpContext context)
         {
             try
@@ -30,6 +48,10 @@ namespace ZEST_Student_Management_System.Middleware
             }
         }
 
+        /// <summary>
+        /// Handles the exception asynchronous.
+        /// </summary>
+        /// <param name="context">The context.</param>
         private static async Task HandleExceptionAsync(
             HttpContext context)
         {

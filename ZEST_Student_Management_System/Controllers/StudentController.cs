@@ -5,20 +5,39 @@ using ZEST_Student_Management_System.Services.Interface;
 
 namespace ZEST_Student_Management_System.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
     public class StudentController : ControllerBase
     {
+        /// <summary>
+        /// The student service
+        /// </summary>
         private readonly IStudentService _studentService;
+        /// <summary>
+        /// The logger
+        /// </summary>
         private readonly ILogger<StudentController> _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StudentController"/> class.
+        /// </summary>
+        /// <param name="studentService">The student service.</param>
+        /// <param name="logger">The logger.</param>
         public StudentController(IStudentService studentService, ILogger<StudentController> logger)
         {
             _studentService = studentService;
             _logger = logger;
         }
 
+        /// <summary>
+        /// Gets all students.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAllStudents()
         {
@@ -28,6 +47,11 @@ namespace ZEST_Student_Management_System.Controllers
             return Ok(students);
         }
 
+        /// <summary>
+        /// Gets the student by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         [HttpGet("GetById/{id}")]
         public async Task<IActionResult> GetStudentById(int id)
         {
@@ -45,6 +69,11 @@ namespace ZEST_Student_Management_System.Controllers
             return Ok(student);
         }
 
+        /// <summary>
+        /// Adds the student.
+        /// </summary>
+        /// <param name="studentDto">The student dto.</param>
+        /// <returns></returns>
         [HttpPost("Add")]
         public async Task<IActionResult> AddStudent([FromBody] CreateStudentDto studentDto)
         {
@@ -55,6 +84,12 @@ namespace ZEST_Student_Management_System.Controllers
             return CreatedAtAction(nameof(GetStudentById), new { id = student.Id }, student);
         }
 
+        /// <summary>
+        /// Updates the student.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="studentDto">The student dto.</param>
+        /// <returns></returns>
         [HttpPut("Update/{id}")]
         public async Task <IActionResult> UpdateStudent(int id, [FromBody] UpdateStudentDto studentDto)
         {
@@ -72,6 +107,11 @@ namespace ZEST_Student_Management_System.Controllers
             return Ok(student);
         }
 
+        /// <summary>
+        /// Deletes the student.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteStudent(int id)
         {

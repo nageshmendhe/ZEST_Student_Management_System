@@ -5,15 +5,30 @@ using ZEST_Student_Management_System.Repositories.Interface;
 
 namespace ZEST_Student_Management_System.Repositories
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="ZEST_Student_Management_System.Repositories.Interface.IStudentRepository" />
     public class StudentRepository : IStudentRepository
     {
-       private readonly ApplicationDbContext _context;
+        /// <summary>
+        /// The context
+        /// </summary>
+        private readonly ApplicationDbContext _context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StudentRepository"/> class.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public StudentRepository(ApplicationDbContext context)
         {
             _context = context;
         }
 
+        /// <summary>
+        /// Gets all asynchronous.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<Student>> GetAllAsync()
         {
             return await _context.Students
@@ -21,6 +36,11 @@ namespace ZEST_Student_Management_System.Repositories
                 .ToListAsync();
         }
 
+        /// <summary>
+        /// Gets the by identifier asynchronous.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public async Task<Student?> GetByIdAsync(int id)
         {
             return await _context.Students
@@ -28,6 +48,11 @@ namespace ZEST_Student_Management_System.Repositories
                 .FirstOrDefaultAsync(s => s.Id == id);
         }
 
+        /// <summary>
+        /// Adds the asynchronous.
+        /// </summary>
+        /// <param name="student">The student.</param>
+        /// <returns></returns>
         public async Task<Student> AddAsync(Student student)
         {
             await _context.Students.AddAsync(student);
@@ -35,6 +60,11 @@ namespace ZEST_Student_Management_System.Repositories
             return student;
         }
 
+        /// <summary>
+        /// Updates the asynchronous.
+        /// </summary>
+        /// <param name="student">The student.</param>
+        /// <returns></returns>
         public async Task<Student?> UpdateAsync(Student student)
         {
             var result = await _context.Students.FindAsync(student.Id);
@@ -52,6 +82,11 @@ namespace ZEST_Student_Management_System.Repositories
             return result;
         }
 
+        /// <summary>
+        /// Deletes the asynchronous.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public async Task<bool> DeleteAsync(int id)
         {
             var result = await _context.Students.FindAsync(id);

@@ -10,6 +10,9 @@ using ZEST_Student_Management_System.Repositories.Interface;
 using ZEST_Student_Management_System.Services;
 using ZEST_Student_Management_System.Services.Interface;
 
+/// <summary>
+/// Initializes a new instance of the <see cref=".$Program" /> class.
+/// </summary>
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

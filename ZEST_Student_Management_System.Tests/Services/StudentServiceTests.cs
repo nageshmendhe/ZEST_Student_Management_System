@@ -11,8 +11,14 @@ using ZEST_Student_Management_System.Services;
 
 namespace ZEST_Student_Management_System.Tests.Services
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class StudentServiceTests
     {
+        /// <summary>
+        /// Gets all students asynchronous when students exist returns all students.
+        /// </summary>
         [Fact]
         public async Task GetAllStudentsAsync_WhenStudentsExist_ReturnsAllStudents()
         {
@@ -37,6 +43,9 @@ namespace ZEST_Student_Management_System.Tests.Services
             mockRepo.Verify(r => r.GetAllAsync(), Times.Once);
         }
 
+        /// <summary>
+        /// Gets all students asynchronous when no students exist returns empty collection.
+        /// </summary>
         [Fact]
         public async Task GetAllStudentsAsync_WhenNoStudentsExist_ReturnsEmptyCollection()
         {
@@ -55,6 +64,9 @@ namespace ZEST_Student_Management_System.Tests.Services
             mockRepo.Verify(r => r.GetAllAsync(), Times.Once);
         }
 
+        /// <summary>
+        /// Gets the student by identifier asynchronous when student exists returns student.
+        /// </summary>
         [Fact]
         public async Task GetStudentByIdAsync_WhenStudentExists_ReturnsStudent()
         {
@@ -75,6 +87,9 @@ namespace ZEST_Student_Management_System.Tests.Services
             mockRepo.Verify(r => r.GetByIdAsync(1), Times.Once);
         }
 
+        /// <summary>
+        /// Gets the student by identifier asynchronous when student does not exist returns null.
+        /// </summary>
         [Fact]
         public async Task GetStudentByIdAsync_WhenStudentDoesNotExist_ReturnsNull()
         {
@@ -92,6 +107,9 @@ namespace ZEST_Student_Management_System.Tests.Services
             mockRepo.Verify(r => r.GetByIdAsync(99), Times.Once);
         }
 
+        /// <summary>
+        /// Adds the student asynchronous with valid dto creates and returns student and calls repository once.
+        /// </summary>
         [Fact]
         public async Task AddStudentAsync_WithValidDto_CreatesAndReturnsStudent_AndCallsRepositoryOnce()
         {
@@ -126,6 +144,9 @@ namespace ZEST_Student_Management_System.Tests.Services
             mockRepo.Verify(r => r.AddAsync(It.IsAny<Student>()), Times.Exactly(1));
         }
 
+        /// <summary>
+        /// Updates the student asynchronous when student exists returns updated student and calls repository once.
+        /// </summary>
         [Fact]
         public async Task UpdateStudentAsync_WhenStudentExists_ReturnsUpdatedStudent_AndCallsRepositoryOnce()
         {
@@ -149,6 +170,9 @@ namespace ZEST_Student_Management_System.Tests.Services
             mockRepo.Verify(r => r.UpdateAsync(It.Is<Student>(s => s.Id == 5 && s.Name == dto.Name && s.Email == dto.Email && s.Age == dto.Age && s.Course == dto.Course)), Times.Once);
         }
 
+        /// <summary>
+        /// Updates the student asynchronous when student does not exist returns null.
+        /// </summary>
         [Fact]
         public async Task UpdateStudentAsync_WhenStudentDoesNotExist_ReturnsNull()
         {
@@ -167,6 +191,9 @@ namespace ZEST_Student_Management_System.Tests.Services
             mockRepo.Verify(r => r.UpdateAsync(It.Is<Student>(s => s.Id == 10 && s.Name == dto.Name)), Times.Once);
         }
 
+        /// <summary>
+        /// Deletes the student asynchronous when deletion succeeds returns true and calls repository once.
+        /// </summary>
         [Fact]
         public async Task DeleteStudentAsync_WhenDeletionSucceeds_ReturnsTrue_AndCallsRepositoryOnce()
         {
@@ -184,6 +211,9 @@ namespace ZEST_Student_Management_System.Tests.Services
             mockRepo.Verify(r => r.DeleteAsync(3), Times.Once);
         }
 
+        /// <summary>
+        /// Deletes the student asynchronous when student does not exist returns false and calls repository once.
+        /// </summary>
         [Fact]
         public async Task DeleteStudentAsync_WhenStudentDoesNotExist_ReturnsFalse_AndCallsRepositoryOnce()
         {
