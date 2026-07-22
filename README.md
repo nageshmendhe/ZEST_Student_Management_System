@@ -521,4 +521,4 @@ Possible future enhancements include:
 - Integration testing
 - End-to-end frontend testing
 - Docker Compose for API and database orchestration
-- Production-grade secret management
+- Production-grade secret management.
