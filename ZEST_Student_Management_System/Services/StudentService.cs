@@ -32,7 +32,7 @@ namespace ZEST_Student_Management_System.Services
                 Email = studentDto.Email,
                 Age = studentDto.Age,
                 Course = studentDto.Course,
-                CreateDate = DateTime.UtcNow
+                CreatedDate = DateTime.UtcNow
             };
 
             return await _studentRepository.AddAsync(student);
